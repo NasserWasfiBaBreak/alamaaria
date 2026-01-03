@@ -133,6 +133,107 @@
     margin-bottom: 2rem;
 }
 
+/* Social Share Section */
+.share-section {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--gray-light);
+    border-radius: 8px;
+}
+
+.share-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--gray-dark);
+}
+
+.share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--white);
+}
+
+.share-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.share-btn.whatsapp {
+    background: #25D366;
+}
+
+.share-btn.whatsapp:hover {
+    background: #20ba5a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.share-btn.facebook {
+    background: #1877F2;
+}
+
+.share-btn.facebook:hover {
+    background: #0c63d4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+}
+
+.share-btn.x-twitter {
+    background: #000000;
+}
+
+.share-btn.x-twitter:hover {
+    background: #14171A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.share-btn.linkedin {
+    background: #0A66C2;
+}
+
+.share-btn.linkedin:hover {
+    background: #084f94;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+}
+
+.share-btn.email {
+    background: var(--gray-medium);
+}
+
+.share-btn.email:hover {
+    background: var(--gray-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(90, 90, 90, 0.3);
+}
+
+.share-btn.copy-link {
+    background: var(--gold);
+}
+
+.share-btn.copy-link:hover {
+    background: var(--gold-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(201, 168, 106, 0.3);
+}
+
 .property-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -307,5 +408,18 @@
     .gallery-thumb {
         width: 60px;
         height: 45px;
+    }
+
+    .share-section {
+        padding: 1.5rem;
+    }
+
+    .share-buttons {
+        flex-direction: column;
+    }
+
+    .share-btn {
+        width: 100%;
+        justify-content: center;
     }
 }
