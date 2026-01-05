@@ -65,7 +65,7 @@ function getProperties() {
 
 // Get default properties (initial data)
 function getDefaultProperties() {
-    return [
+    const defaultProps = [
         {
             id: 1,
             title: 'Luxury Villa',
@@ -75,7 +75,7 @@ function getDefaultProperties() {
             area: 450,
             price: 2500000,
             featured: true,
-            image: '',
+            images: [],
             description: 'Stunning luxury villa with modern amenities'
         },
         {
@@ -87,7 +87,7 @@ function getDefaultProperties() {
             area: 180,
             price: 850000,
             featured: false,
-            image: '',
+            images: [],
             description: 'Contemporary apartment in prime location'
         },
         {
@@ -99,10 +99,17 @@ function getDefaultProperties() {
             area: 320,
             price: 1750000,
             featured: false,
-            image: '',
+            images: [],
             description: 'Exclusive penthouse with breathtaking views'
         }
     ];
+
+    // Create property detail pages for default properties
+    defaultProps.forEach(property => {
+        createPropertyDetailPage(property.id, property);
+    });
+
+    return defaultProps;
 }
 
 // Save properties to localStorage
