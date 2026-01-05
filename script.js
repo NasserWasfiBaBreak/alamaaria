@@ -3,9 +3,72 @@
 // ===================================
 const PROPERTIES_STORAGE_KEY = 'alamaaria_properties';
 
+// Get default properties (initial data)
+function getDefaultProperties() {
+    const defaultProps = [
+        {
+            id: 1,
+            title: 'Luxury Villa',
+            location: 'Al Rawda, Ajman',
+            beds: 5,
+            baths: 4,
+            area: 450,
+            price: 2500000,
+            featured: true,
+            images: [],
+            description: 'Stunning luxury villa with modern amenities'
+        },
+        {
+            id: 2,
+            title: 'Modern Apartment',
+            location: 'Al Nuaimia, Ajman',
+            beds: 3,
+            baths: 2,
+            area: 180,
+            price: 850000,
+            featured: false,
+            images: [],
+            description: 'Contemporary apartment in prime location'
+        },
+        {
+            id: 3,
+            title: 'Penthouse Suite',
+            location: 'Ajman Corniche',
+            beds: 4,
+            baths: 3,
+            area: 320,
+            price: 1750000,
+            featured: false,
+            images: [],
+            description: 'Exclusive penthouse with breathtaking views'
+        }
+    ];
+
+    // Create property detail pages for default properties
+    defaultProps.forEach(property => {
+        createPropertyDetailPage(property.id, property);
+    });
+
+    return defaultProps;
+}
+
+function createPropertyDetailPage(propertyId, propertyData) {
+    const pagesKey = 'alamaaria_property_pages';
+    const pages = JSON.parse(localStorage.getItem(pagesKey) || '{}');
+
+    pages[propertyId] = {
+        id: propertyId,
+        ...propertyData,
+        createdAt: pages[propertyId]?.createdAt || new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+    };
+
+    localStorage.setItem(pagesKey, JSON.stringify(pages));
+}
+
 function loadPropertiesFromStorage() {
     const properties = localStorage.getItem(PROPERTIES_STORAGE_KEY);
-    return properties ? JSON.parse(properties) : [];
+    return properties ? JSON.parse(properties) : getDefaultProperties();
 }
 
 function renderProperties() {
@@ -343,5 +406,13 @@ window.addEventListener('scroll', () => {
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
+
+// ===================================
+// Initialize properties in localStorage if not exists
+// ===================================
+if (!localStorage.getItem(PROPERTIES_STORAGE_KEY)) {
+    const defaultProps = getDefaultProperties();
+    localStorage.setItem(PROPERTIES_STORAGE_KEY, JSON.stringify(defaultProps));
+}
 
 console.log('Alamaaria Website - All scripts loaded successfully');
