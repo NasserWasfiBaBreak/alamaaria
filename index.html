@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Apply saved language immediately to prevent flash -->
+    <script>
+        (function() {
+            const savedLang = localStorage.getItem('alamaaria_language') || 'en';
+            document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', savedLang);
+        })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -17,17 +26,38 @@
                 <h1>ALAMAARIA</h1>
                 <p class="logo-subtitle">Real Estate</p>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#properties">Properties</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#about" data-i18n="nav_about">About</a></li>
+                    <li><a href="#properties" data-i18n="nav_properties">Properties</a></li>
+                    <li><a href="#services" data-i18n="nav_services">Services</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button class="lang-toggle" aria-label="Change Language">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option" data-lang="en">
+                            <span class="lang-flag">🇬🇧</span>
+                            <span>English</span>
+                        </button>
+                        <button class="lang-option" data-lang="ar">
+                            <span class="lang-flag">🇦🇪</span>
+                            <span>العربية</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
             </div>
         </div>
     </nav>
@@ -37,12 +67,12 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h2 class="hero-subtitle">Discover Luxury Living</h2>
-                <h1 class="hero-title">Your Gateway to <span class="gold-text">Premium</span> Real Estate in Ajman</h1>
-                <p class="hero-description">Experience exceptional properties that redefine elegant living</p>
+                <h2 class="hero-subtitle" data-i18n="hero_luxury">Luxury</h2>
+                <h1 class="hero-title" data-i18n="hero_title">Find Your Dream Property in Ajman</h1>
+                <p class="hero-description" data-i18n="hero_description">Discover exceptional properties in the heart of the UAE with Alamaaria Real Estate</p>
                 <div class="hero-buttons">
-                    <a href="#properties" class="btn btn-primary">Explore Properties</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    <a href="#properties" class="btn btn-primary" data-i18n="hero_cta">Explore Properties</a>
+                    <a href="#contact" class="btn btn-secondary" data-i18n="hero_cta_contact">Get in Touch</a>
                 </div>
             </div>
         </div>
@@ -55,13 +85,13 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">About Alamaaria</span>
-                <h2 class="section-title">Where Excellence Meets <span class="gold-text">Elegance</span></h2>
+                <span class="section-label" data-i18n="about_title">About Alamaaria</span>
+                <h2 class="section-title" data-i18n="about_subtitle">Your Trusted Partner in Real Estate</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p class="lead">Alamaaria stands as a beacon of excellence in Ajman's real estate landscape, offering discerning clients access to the finest properties in the UAE.</p>
-                    <p>With years of expertise and an unwavering commitment to quality, we curate exceptional living spaces that embody sophistication and modern luxury. Our portfolio features carefully selected properties that meet the highest standards of design, comfort, and investment value.</p>
+                    <p class="lead" data-i18n="about_p1">Alamaaria Real Estate is your premier destination for luxury properties in Ajman, UAE. With years of experience in the real estate market, we specialize in connecting clients with their dream homes and investment opportunities.</p>
+                    <p data-i18n="about_p2">Our commitment to excellence, personalized service, and deep understanding of the local market sets us apart. Whether you're buying, selling, or renting, we're here to guide you every step of the way.</p>
                     <div class="stats">
                         <div class="stat-item">
                             <h3 class="stat-number">500+</h3>
@@ -88,8 +118,8 @@
     <section id="properties" class="properties">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Featured Listings</span>
-                <h2 class="section-title">Exceptional <span class="gold-text">Properties</span></h2>
+                <span class="section-label" data-i18n="properties_title">Featured Properties</span>
+                <h2 class="section-title" data-i18n="properties_subtitle">Discover Our Exclusive Listings</h2>
             </div>
             <div class="properties-grid">
                 <div class="property-card">
@@ -152,8 +182,8 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">What We Offer</span>
-                <h2 class="section-title">Our <span class="gold-text">Services</span></h2>
+                <span class="section-label" data-i18n="services_title">Our Services</span>
+                <h2 class="section-title" data-i18n="services_subtitle">Comprehensive Real Estate Solutions</h2>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -163,8 +193,8 @@
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
                     </div>
-                    <h3 class="service-title">Property Sales</h3>
-                    <p class="service-description">Expert guidance through every step of buying or selling premium properties in Ajman.</p>
+                    <h3 class="service-title" data-i18n="service_sales_title">Property Sales</h3>
+                    <p class="service-description" data-i18n="service_sales_desc">Expert guidance in buying and selling luxury properties with comprehensive market analysis.</p>
                 </div>
 
                 <div class="service-card">
@@ -174,8 +204,8 @@
                             <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                         </svg>
                     </div>
-                    <h3 class="service-title">Property Rental</h3>
-                    <p class="service-description">Find your perfect rental property with our comprehensive listing of luxury homes and apartments.</p>
+                    <h3 class="service-title" data-i18n="service_rental_title">Property Rental</h3>
+                    <p class="service-description" data-i18n="service_rental_desc">Find your perfect rental property with our comprehensive listing of luxury homes and apartments.</p>
                 </div>
 
                 <div class="service-card" style="display: none;">
@@ -208,10 +238,9 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="section-header">
-                        <span class="section-label">Get in Touch</span>
-                        <h2 class="section-title">Let's Find Your <span class="gold-text">Dream Property</span></h2>
+                        <span class="section-label" data-i18n="contact_title">Get In Touch</span>
+                        <h2 class="section-title" data-i18n="contact_subtitle">We're Here to Help</h2>
                     </div>
-                    <p class="contact-description">Our team of experts is ready to assist you in finding the perfect property that matches your aspirations.</p>
 
                     <div class="contact-details">
                         <div class="contact-item">
@@ -222,8 +251,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4>Location</h4>
-                                <p>Ajman, United Arab Emirates</p>
+                                <h4 data-i18n="contact_address">Address</h4>
+                                <p data-i18n="contact_address_text">Ajman, UAE</p>
                             </div>
                         </div>
 
@@ -234,7 +263,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4>Phone</h4>
+                                <h4 data-i18n="contact_phone">Phone</h4>
                                 <p>+971 XX XXX XXXX</p>
                             </div>
                         </div>
@@ -247,7 +276,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4>Email</h4>
+                                <h4 data-i18n="contact_email">Email</h4>
                                 <p>info@alamaaria.com</p>
                             </div>
                         </div>
@@ -257,27 +286,27 @@
                 <div class="contact-form-wrapper">
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <input type="text" id="name" name="name" data-i18n-placeholder="form_name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <input type="email" id="email" name="email" data-i18n-placeholder="form_email" placeholder="Email Address" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Your Phone">
+                            <input type="tel" id="phone" name="phone" data-i18n-placeholder="form_phone" placeholder="Phone Number">
                         </div>
                         <div class="form-group">
                             <select id="interest" name="interest">
-                                <option value="">Property Interest</option>
-                                <option value="buying">Buying</option>
-                                <option value="selling">Selling</option>
-                                <option value="renting">Renting</option>
+                                <option value="" data-i18n="form_interest">I'm interested in</option>
+                                <option value="buying" data-i18n="form_interest_buying">Buying a Property</option>
+                                <option value="selling" data-i18n="form_interest_selling">Selling a Property</option>
+                                <option value="renting" data-i18n="form_interest_renting">Renting a Property</option>
                                 <option value="investment">Investment</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+                            <textarea id="message" name="message" rows="4" data-i18n-placeholder="form_message" placeholder="Message" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-full" data-i18n="form_submit">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -290,19 +319,19 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>ALAMAARIA</h3>
-                    <p>Your trusted partner in luxury real estate</p>
+                    <p data-i18n="footer_brand_desc">Your trusted partner in luxury real estate</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4 data-i18n="footer_quick_links">Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#properties">Properties</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
+                        <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                        <li><a href="#properties" data-i18n="nav_properties">Properties</a></li>
+                        <li><a href="#about" data-i18n="nav_about">About</a></li>
+                        <li><a href="#services" data-i18n="nav_services">Services</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
-                    <h4>Follow Us</h4>
+                    <h4 data-i18n="footer_follow">Follow Us</h4>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook">
                             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -323,11 +352,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Alamaaria Real Estate. All rights reserved.</p>
+                <p data-i18n="footer_rights">&copy; 2025 Alamaaria Real Estate. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="language.js?v=5"></script>
+    <script src="script.js?v=5"></script>
 </body>
 </html>

@@ -108,7 +108,74 @@ function formatPrice(price) {
 }
 
 // Load properties when page loads
-document.addEventListener('DOMContentLoaded', renderProperties);
+document.addEventListener('DOMContentLoaded', () => {
+    renderProperties();
+    initializeLanguageSwitcher();
+});
+
+// ===================================
+// Language Switcher
+// ===================================
+function initializeLanguageSwitcher() {
+    const languageSwitcher = document.querySelector('.language-switcher');
+    const langToggle = document.querySelector('.lang-toggle');
+    const langOptions = document.querySelectorAll('.lang-option');
+
+    if (!langToggle || !languageSwitcher) {
+        console.error('Language switcher elements not found');
+        return;
+    }
+
+    // Toggle dropdown
+    langToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        languageSwitcher.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!languageSwitcher.contains(e.target)) {
+            languageSwitcher.classList.remove('active');
+        }
+    });
+
+    // Handle language selection
+    langOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const lang = option.dataset.lang;
+            console.log('Language option clicked:', lang);
+
+            if (window.languageManager) {
+                window.languageManager.setLanguage(lang);
+
+                // Update active state
+                langOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+
+                // Close dropdown
+                languageSwitcher.classList.remove('active');
+            } else {
+                console.error('languageManager not available');
+            }
+        });
+    });
+
+    // Set initial active state based on current language
+    if (window.languageManager) {
+        const currentLang = window.languageManager.currentLang;
+        langOptions.forEach(opt => {
+            if (opt.dataset.lang === currentLang) {
+                opt.classList.add('active');
+            }
+        });
+    }
+}
+
+// Update dynamic content when language changes
+document.addEventListener('languageChanged', (e) => {
+    // Re-render properties with new language
+    renderProperties();
+});
 
 // ===================================
 // Mobile Navigation Toggle
@@ -216,7 +283,7 @@ contactForm.addEventListener('submit', (e) => {
     console.log('Form submitted:', formData);
 
     // Show success message
-    showNotification('Thank you for your inquiry! We will get back to you soon.', 'success');
+    showNotification(window.languageManager.translate('form_success'), 'success');
 
     // Reset form
     contactForm.reset();

@@ -131,6 +131,13 @@ ul {
     word-spacing: -0.15em;
 }
 
+/* Nav Right Section */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
 .nav-links {
     display: flex;
     gap: var(--spacing-md);
@@ -161,6 +168,90 @@ ul {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+/* Language Switcher */
+.language-switcher {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lang-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-dark);
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.lang-toggle:hover {
+    color: var(--gold);
+    background: rgba(201, 168, 106, 0.1);
+}
+
+.lang-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    min-width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: var(--transition);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.language-switcher.active .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-option {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: var(--gray-dark);
+    transition: var(--transition);
+    text-align: left;
+}
+
+.lang-option:hover {
+    background: rgba(201, 168, 106, 0.1);
+    color: var(--gold);
+}
+
+.lang-option.active {
+    background: rgba(201, 168, 106, 0.15);
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.lang-flag {
+    font-size: 1.5rem;
+    line-height: 1;
 }
 
 .burger {
@@ -816,6 +907,10 @@ ul {
    Responsive Design
    =================================== */
 @media screen and (max-width: 768px) {
+    .nav-right {
+        gap: 0.5rem;
+    }
+
     .nav-links {
         position: fixed;
         right: -100%;
@@ -831,6 +926,10 @@ ul {
 
     .nav-links.active {
         right: 0;
+    }
+
+    .language-switcher {
+        order: -1;
     }
 
     .burger {
@@ -918,5 +1017,100 @@ ul {
     .property-features {
         flex-direction: column;
         gap: var(--spacing-sm);
+    }
+
+    .language-switcher {
+        margin: 0 0.5rem;
+    }
+}
+
+/* ===================================
+   RTL Support (Arabic)
+   =================================== */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .logo-subtitle {
+    letter-spacing: 0.495em;
+    word-spacing: -0.15em;
+}
+
+[dir="rtl"] .nav-links {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .language-switcher {
+    margin: 0 1rem 0 0;
+}
+
+[dir="rtl"] .lang-dropdown {
+    left: 0;
+    right: auto;
+}
+
+[dir="rtl"] .lang-option {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-text {
+    text-align: right;
+}
+
+[dir="rtl"] .section-header {
+    text-align: right;
+}
+
+[dir="rtl"] .about-content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .property-features {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .services-grid,
+[dir="rtl"] .properties-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .contact-content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer-content {
+    direction: rtl;
+}
+
+[dir="rtl"] .social-links {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-links a::after {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .property-badge {
+    left: auto;
+    right: 1rem;
+}
+
+[dir="rtl"] .scroll-indicator {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+/* RTL Mobile Adjustments */
+@media (max-width: 768px) {
+    [dir="rtl"] .nav-links {
+        align-items: flex-end;
+    }
+
+    [dir="rtl"] .language-switcher {
+        margin: 0;
     }
 }
