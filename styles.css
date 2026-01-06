@@ -1069,11 +1069,7 @@ ul {
 }
 
 [dir="rtl"] .nav-links {
-    flex-direction: row-reverse;
-}
-
-[dir="rtl"] .language-switcher {
-    margin: 0 1rem 0 0;
+    direction: rtl;
 }
 
 [dir="rtl"] .lang-dropdown {
@@ -1140,18 +1136,15 @@ ul {
 }
 
 [dir="rtl"] .scroll-indicator {
-    left: auto;
-    right: 50%;
-    transform: translateX(50%);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
 }
 
 /* RTL Mobile Adjustments */
 @media (max-width: 768px) {
     [dir="rtl"] .nav-links {
-        align-items: flex-end;
-    }
-
-    [dir="rtl"] .language-switcher {
-        margin: 0;
+        text-align: center;
+        direction: rtl;
     }
 }
