@@ -1055,8 +1055,18 @@ ul {
     flex-direction: row-reverse;
 }
 
-[dir="rtl"] .hero-text {
-    text-align: right;
+[dir="rtl"] .hero-content {
+    text-align: center;
+}
+
+[dir="rtl"] .hero-subtitle,
+[dir="rtl"] .hero-title,
+[dir="rtl"] .hero-description {
+    text-align: center;
+}
+
+[dir="rtl"] .hero-buttons {
+    justify-content: center;
 }
 
 [dir="rtl"] .section-header {
